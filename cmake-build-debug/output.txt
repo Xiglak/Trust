@@ -1,0 +1,4 @@
+Hello, World!
+Testing basics start
+Testing struct Node
+Current working dir: C:\Users\renau\CLionProjects\Trust\cmake-build-debug

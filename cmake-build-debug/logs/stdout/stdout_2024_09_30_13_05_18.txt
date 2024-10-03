@@ -1,0 +1,6 @@
+streams test [0m[Time: 2.263000] [Key: 0x20] [Name: Space] [Value: 8001] [[32mv[0m]
+ [0m[Time: 0.007000] [Key: 0x20] [Name: Space] [Value: 8000] [[33m_[0m]
+ [0m[Time: 0.141000] [Key: 0x20] [Name: Space] [Value: 0] [[34m^[0m]
+ [0m[Time: 20.166000] [Key: 0x01] [Name: Rclick] [Value: 8001] [[32mv[0m]
+ [0m[Time: 0.003000] [Key: 0x01] [Name: Rclick] [Value: 8000] [[33m_[0m]
+ [0m[Time: 0.215000] [Key: 0x01] [Name: Rclick] [Value: 0] [[34m^[0m]

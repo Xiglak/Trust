@@ -10,23 +10,23 @@
 
 // Node //
 
-struct Node* node_create_empty() {
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+Node* node_create_empty() {
+    Node* new_node = (Node*)malloc(sizeof(Node));
     if (new_node != NULL) {
         new_node->value = NULL;
     }
     return new_node;
 }
 
-struct Node* node_create(void* value) {
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+Node* node_create(void* value) {
+    Node* new_node = (Node*)malloc(sizeof(Node));
     if (new_node != NULL) {
         new_node->value = value;
     }
     return new_node;
 }
 
-void node_destroy(struct Node* node) {
+void node_destroy(Node* node) {
     if (node != NULL) {
         free(node);
     }
@@ -35,8 +35,8 @@ void node_destroy(struct Node* node) {
 
 // Node_n //
 
-struct Node_n* node_n_create_empty() {
-    struct Node_n* new_node = (struct Node_n*)malloc(sizeof(struct Node_n));
+Node_n* node_n_create_empty() {
+    Node_n* new_node = (Node_n*)malloc(sizeof(Node_n));
     if (new_node != NULL) {
         new_node->value = NULL;
         new_node->next = NULL;
@@ -44,8 +44,8 @@ struct Node_n* node_n_create_empty() {
     return new_node;
 }
 
-struct Node_n* node_n_create_v(void* value) {
-    struct Node_n* new_node = (struct Node_n*)malloc(sizeof(struct Node_n));
+Node_n* node_n_create_v(void* value) {
+    Node_n* new_node = (Node_n*)malloc(sizeof(Node_n));
     if (new_node != NULL) {
         new_node->value = value;
         new_node->next = NULL;
@@ -53,8 +53,8 @@ struct Node_n* node_n_create_v(void* value) {
     return new_node;
 }
 
-struct Node_n* node_n_create_vn(void* value,struct Node_n* next) {
-    struct Node_n* new_node = (struct Node_n*)malloc(sizeof(struct Node_n));
+Node_n* node_n_create_vn(void* value, Node_n* next) {
+    Node_n* new_node = (Node_n*)malloc(sizeof(Node_n));
     if (new_node != NULL) {
         new_node->value = value;
         new_node->next = next;
@@ -62,7 +62,7 @@ struct Node_n* node_n_create_vn(void* value,struct Node_n* next) {
     return new_node;
 }
 
-void node_n_destroy(struct Node_n* node) {
+void node_n_destroy(Node_n* node) {
     if (node != NULL) {
         free(node);
     }
@@ -72,8 +72,8 @@ void node_n_destroy(struct Node_n* node) {
 
 // Node_pn //
 
-struct Node_pn* node_pn_create_empty() {
-    struct Node_pn* new_node = (struct Node_pn*)malloc(sizeof(struct Node_pn));
+Node_pn* node_pn_create_empty() {
+    Node_pn* new_node = (Node_pn*)malloc(sizeof(Node_pn));
     if (new_node != NULL) {
         new_node->value = NULL;
         new_node->prev = NULL;
@@ -82,8 +82,8 @@ struct Node_pn* node_pn_create_empty() {
     return new_node;
 }
 
-struct Node_pn* node_pn_create_v(void* value) {
-    struct Node_pn* new_node = (struct Node_pn*)malloc(sizeof(struct Node_pn));
+Node_pn* node_pn_create_v(void* value) {
+    Node_pn* new_node = (Node_pn*)malloc(sizeof(Node_pn));
     if (new_node != NULL) {
         new_node->value = value;
         new_node->prev = NULL;
@@ -92,8 +92,8 @@ struct Node_pn* node_pn_create_v(void* value) {
     return new_node;
 }
 
-struct Node_pn* node_pn_create_vnp(void* value,struct Node_pn* prev,struct Node_pn* next){
-    struct Node_pn* new_node = (struct Node_pn*)malloc(sizeof(struct Node_pn));
+Node_pn* node_pn_create_vnp(void* value, Node_pn* prev, Node_pn* next){
+    Node_pn* new_node = (Node_pn*)malloc(sizeof(Node_pn));
     if (new_node != NULL) {
         new_node->value=value;
         new_node->prev= prev;
@@ -102,7 +102,7 @@ struct Node_pn* node_pn_create_vnp(void* value,struct Node_pn* prev,struct Node_
     return new_node;
 };
 
-void node_pn_destroy(struct Node_pn* node) {
+void node_pn_destroy(Node_pn* node) {
     if (node != NULL) {
         free(node);
     }
@@ -111,16 +111,16 @@ void node_pn_destroy(struct Node_pn* node) {
 
 // node_bin //
 
-struct Node_bin* node_bin_create_empty(){
-    struct Node_bin* new_node = (struct Node_bin*)malloc(sizeof(struct Node_bin));
+Node_bin* node_bin_create_empty(){
+    Node_bin* new_node = (Node_bin*)malloc(sizeof(Node_bin));
     if (new_node != NULL) {
         new_node->value = NULL;
     }
     return new_node;
 }
 
-struct Node_bin* node_bin_create(void* value){
-    struct Node_bin* new_node = (struct Node_bin*)malloc(sizeof(struct Node_bin));
+Node_bin* node_bin_create(void* value){
+    Node_bin* new_node = (Node_bin*)malloc(sizeof(Node_bin));
     if (new_node != NULL) {
         new_node->value = value;
         new_node->link[0]=NULL;
@@ -129,7 +129,7 @@ struct Node_bin* node_bin_create(void* value){
     return new_node;
 }
 
-void node_bin_destroy(struct Node_bin* node) {
+void node_bin_destroy(Node_bin* node) {
     if (node != NULL) {
         free(node);
     }
@@ -138,27 +138,27 @@ void node_bin_destroy(struct Node_bin* node) {
 
 // node_xn //
 
-struct Node_xn* node_xn_create_empty(int x){
-    struct Node_xn* new_node = (struct Node_xn*)malloc(x * sizeof(struct Node_xn*));
+Node_xn* node_xn_create_empty(int x){
+    Node_xn* new_node = (Node_xn*)malloc(x * sizeof(Node_xn*));
     if (new_node != NULL) {
         new_node->value = NULL;
         new_node->n_branch = x;
-        new_node->link = (struct Node_xn**)malloc(x * sizeof(struct Node_xn*));
+        new_node->link = (Node_xn**)malloc(x * sizeof(Node_xn*));
     }
     return new_node;
 }
 
-struct Node_xn* node_xn_create(int x, void* value){
-    struct Node_xn* new_node = (struct Node_xn*)malloc(x * sizeof(struct Node_xn*));
+Node_xn* node_xn_create(int x, void* value){
+    Node_xn* new_node = (Node_xn*)malloc(x * sizeof(Node_xn*));
     if (new_node != NULL) {
         new_node->value = value;
         new_node->n_branch = x;
-        new_node->link = (struct Node_xn**)malloc(x * sizeof(struct Node_xn*));
+        new_node->link = (Node_xn**)malloc(x * sizeof(Node_xn*));
     }
     return new_node;
 }
 
-void node_xn_destroy(struct Node_xn* node) {
+void node_xn_destroy(Node_xn* node) {
     if (node != NULL) {
         free(node->link);
         free(node);
@@ -170,27 +170,27 @@ void node_xn_destroy(struct Node_xn* node) {
 // ===================== Lists =====================
 
 // List_h //
-struct List_h* list_h_create_empty() {
-    struct List_h* new_list = (struct List_h*)malloc(sizeof(struct List_h));
+List_h* list_h_create_empty() {
+    List_h* new_list = (List_h*)malloc(sizeof(List_h));
     if (new_list != NULL) {
         new_list->head = NULL;
     }
     return new_list;
 }
 
-struct List_h* list_h_create(void* value) {
-    struct List_h* new_list = list_h_create_empty();
+List_h* list_h_create(void* value) {
+    List_h* new_list = list_h_create_empty();
     if (new_list != NULL) {
         new_list->head = node_n_create_v(value);
     }
     return new_list;
 }
 
-void list_h_destroy(struct List_h* list) {
+void list_h_destroy(List_h* list) {
     if (list != NULL) {
-        struct Node_n* current = list->head;
+        Node_n* current = list->head;
         while (current != NULL) {
-            struct Node_n* next = current->next;
+             Node_n* next = current->next;
             node_n_destroy(current);
             current = next;
         }
@@ -201,40 +201,52 @@ void list_h_destroy(struct List_h* list) {
 
 // List_ht //
 
-struct List_ht* list_ht_create_empty(){
-    struct List_ht* mylist=(struct List_ht*)malloc(sizeof(struct List_ht));
+List_ht* list_ht_create_empty(){
+    List_ht* mylist=malloc(sizeof(List_ht));
     mylist->head=NULL;
     mylist->tail=NULL;
     return mylist;
 };
 
-struct List_ht* list_ht_create(struct Node_pn* head,int lenght){
-    struct List_ht* mylist = (struct List_ht*)malloc(sizeof(struct List_ht));
-    mylist->head=head;
-    mylist->tail=head;
-    if (lenght<0) {
-        while (mylist->tail->next!=NULL) {
-            mylist->tail=mylist->tail->next;
+List_ht* list_ht_create(Node_pn* head,int lenght){
+    List_ht* mylist = malloc(sizeof(List_ht));
+    if (head==NULL) {
+        mylist->head = NULL;
+        mylist->tail = NULL;
+    }
+    else {
+        mylist->head = head;
+        mylist->tail = mylist->head;
+        if (lenght<0) {
+            mylist->head=NULL;
+            mylist->tail=NULL;
+        }
+        else {
+            for(; 0!=lenght; lenght--)
+            {
+                if ((Node_pn*)(mylist->tail)->next!=NULL) {
+                    mylist->tail= mylist->tail->next;
+                }
+            };
         }
     }
-    for(int i = 1; i!=lenght; i++)
-    {
-        if (mylist->tail->next!=NULL) {
-            mylist->tail= mylist->tail->next;
-        }
-    };
     return mylist;
 };
 
-void list_ht_append_node(struct List_ht* list, struct Node_pn* node){
+void list_ht_append_node(List_ht* list,  Node_pn* node){
     node->prev=list->tail;
     node->next=NULL;
-    list->tail->next=node;
-    list->tail=list->tail->next;
+    if (list->tail!=NULL) {
+        list->tail->next=node;
+        list->tail=list->tail->next;
+    }
+    else {
+        list->tail=node;
+    }
 };
 
-void list_ht_append_value(struct List_ht* list, void* value){
-    struct Node_pn *node = node_pn_create_v(value);
+void list_ht_append_value(List_ht* list, void* value){
+     Node_pn *node = node_pn_create_v(value);
     if (list->head == NULL) {
         list->head = node;
         list->tail = node;
@@ -246,14 +258,14 @@ void list_ht_append_value(struct List_ht* list, void* value){
     node->next=NULL;
 };
 
-void list_ht_insert(struct List_ht* list, void* value, int position) {
-    struct Node_pn* new_node = node_pn_create_v(value);
+void list_ht_insert(List_ht* list, void* value, int position) {
+     Node_pn* new_node = node_pn_create_v(value);
     if (list->head == NULL) {
         list->head = new_node;
         list->tail = new_node;
     }
     else {
-        struct Node_pn* current = list->head;
+         Node_pn* current = list->head;
         int i = 0;
         while (current != NULL && i < position) {
             current = current->next;
@@ -263,7 +275,7 @@ void list_ht_insert(struct List_ht* list, void* value, int position) {
             new_node->next = current->next;
             new_node->prev = current;
             if (current->next != NULL) {
-                current->next->prev = new_node;
+                (Node_pn*)(current->next)->prev = new_node;
             }
             else {
                 list->tail = new_node;
@@ -273,10 +285,10 @@ void list_ht_insert(struct List_ht* list, void* value, int position) {
     }
 }
 
-int list_ht_count_node(struct List_ht* list) {
+int list_ht_count_node(List_ht* list) {
     if (list->head!=NULL) {
         int i = 1;
-        struct Node_pn* cur=list->head;
+         Node_pn* cur=list->head;
         while (cur->next!=NULL) {
             cur=cur->next;
             i++;
@@ -286,11 +298,11 @@ int list_ht_count_node(struct List_ht* list) {
     return 0;
 }
 
-void list_ht_destroy(struct List_ht* list) {
+void list_ht_destroy(List_ht* list) {
     if (list != NULL) {
-        struct Node_pn* current = list->head;
+         Node_pn* current = list->head;
         while (current != NULL) {
-            struct Node_pn* next = current->next;
+             Node_pn* next = current->next;
             node_pn_destroy(current);
             current = next;
         }
@@ -301,15 +313,15 @@ void list_ht_destroy(struct List_ht* list) {
 
 // List_c //
 
-struct List_c* list_c_create_empty() {
-    struct List_c* new_list = malloc(sizeof(struct List_c));
+List_c* list_c_create_empty() {
+     List_c* new_list = malloc(sizeof(List_c));
     new_list->size = 0;
     new_list->head = NULL;
     return new_list;
 }
 
-struct List_c* list_c_create(void* value) {
-    struct List_c* new_list = malloc(sizeof(struct List_c));
+List_c* list_c_create(void* value) {
+    List_c* new_list = malloc(sizeof(List_c));
     if (new_list != NULL) {
         new_list->head = node_pn_create_v(value);
         new_list->size = 1;
@@ -317,12 +329,12 @@ struct List_c* list_c_create(void* value) {
     return new_list;
 }
 
-void list_c_append(struct List_c* list, void* value) {
-    struct Node_pn* new_node = node_pn_create_v(value);
+void list_c_append(List_c* list, void* value) {
+    Node_pn* new_node = node_pn_create_v(value);
     if (list->head == NULL) {
         list->head = new_node;
     } else {
-        struct Node_pn* current = list->head;
+        Node_pn* current = list->head;
         while (current->next != NULL) {
             current = current->next;
         }
@@ -332,11 +344,11 @@ void list_c_append(struct List_c* list, void* value) {
     list->size++;
 }
 
-void list_c_destroy(struct List_c* list) {
+void list_c_destroy(List_c* list) {
     if (list != NULL) {
-        struct Node_pn* current = list->head;
+        Node_pn* current = list->head;
         while (current != NULL) {
-            struct Node_pn* next = current->next;
+            Node_pn* next = current->next;
             node_pn_destroy(current);
             current = next;
         }
@@ -344,30 +356,30 @@ void list_c_destroy(struct List_c* list) {
     }
 }
 
-int list_c_size(struct List_c* list) {
+int list_c_size(List_c* list) {
     return list->size;
 }
 
-int list_c_is_empty(struct List_c* list) {
+int list_c_is_empty(List_c* list) {
     return (list->size == 0);
 }
 
-void* list_c_get(struct List_c* list, int index) {
+void* list_c_get(List_c* list, int index) {
     if (index < 0 || index >= list->size) {
         return NULL;
     }
-    struct Node_pn* current = list->head;
+    Node_pn* current = list->head;
     for (int i = 0; i < index; i++) {
         current = current->next;
     }
     return current->value;
 }
 
-int list_c_set(struct List_c* list, int index, void* value) {
+int list_c_set(List_c* list, int index, void* value) {
     if (index < 0 || index >= list->size) {
         return 0;
     }
-    struct Node_pn* current = list->head;
+    Node_pn* current = list->head;
     for (int i = 0; i < index; i++) {
         current = current->next;
     }
@@ -375,7 +387,7 @@ int list_c_set(struct List_c* list, int index, void* value) {
     return 1;
 }
 
-void list_c_insert(struct List_c* list, int index, void* value) {
+void list_c_insert(List_c* list, int index, void* value) {
     if (index < 0 || index > list->size) {
         return;
     }
@@ -383,7 +395,7 @@ void list_c_insert(struct List_c* list, int index, void* value) {
         list_c_append(list, value);
         return;
     }
-    struct Node_pn* new_node = node_pn_create_v(value);
+    Node_pn* new_node = node_pn_create_v(value);
     if (index == 0) {
         new_node->next = list->head;
         new_node->prev = list->head->prev;
@@ -391,7 +403,7 @@ void list_c_insert(struct List_c* list, int index, void* value) {
         list->head->prev = new_node;
         list->head = new_node;
     } else {
-        struct Node_pn* current = list->head;
+        Node_pn* current = list->head;
         for (int i = 0; i < index - 1; i++) {
             current = current->next;
         }
@@ -403,18 +415,18 @@ void list_c_insert(struct List_c* list, int index, void* value) {
     list->size++;
 }
 
-void* list_c_remove(struct List_c* list, int index) {
+void* list_c_remove(List_c* list, int index) {
     if (index < 0 || index >= list->size) {
         return NULL;
     }
-    struct Node_pn* to_remove;
+    Node_pn* to_remove;
     if (index == 0) {
         to_remove = list->head;
         list->head = to_remove->next;
         list->head->prev = to_remove->prev;
         to_remove->prev->next = list->head;
     } else {
-        struct Node_pn* current = list->head;
+        Node_pn* current = list->head;
         for (int i = 0; i < index - 1; i++) {
             current = current->next;
         }
@@ -431,7 +443,7 @@ void* list_c_remove(struct List_c* list, int index) {
     return value;
 }
 
-void list_c_clear(struct List_c* list) {
+void list_c_clear(List_c* list) {
     while (!list_c_is_empty(list)) {
         list_c_remove(list, 0);
     }
@@ -441,8 +453,8 @@ void list_c_clear(struct List_c* list) {
 
 // ===================== Stacks =====================
 
-struct Stack* stack_create_empty() {
-    struct Stack* new_stack = (struct Stack*)malloc(sizeof(struct Stack));
+Stack* stack_create_empty() {
+    Stack* new_stack = (Stack*)malloc(sizeof(Stack));
     if (new_stack != NULL) {
         new_stack->head = NULL;
         new_stack->lenth = 0;
@@ -451,9 +463,9 @@ struct Stack* stack_create_empty() {
     return new_stack;
 }
 
-void stack_push(struct Stack* stack, void* data) {
+void stack_push(Stack* stack, void* data) {
     if (stack != NULL) {
-        struct Node_n* new_node = node_n_create_v(data);
+        Node_n* new_node = node_n_create_v(data);
         new_node->next = stack->head;
         stack->head = new_node;
         stack->count++;
@@ -461,20 +473,20 @@ void stack_push(struct Stack* stack, void* data) {
     }
 }
 
-struct Node_n* stack_pop(struct Stack* stack) {
+Node_n* stack_pop(Stack* stack) {
     if (stack != NULL && stack->head != NULL) {
-        struct Node_n* popped = stack->head;
+        Node_n* popped = stack->head;
         stack->head = stack->head->next;
         stack->count--;
-        return (struct Node_n*)popped;
+        return (Node_n*)popped;
     }
     return NULL;
 }
 
-void stack_destroy(struct Stack* stack) {
+void stack_destroy(Stack* stack) {
     if (stack != NULL) {
         while (stack->head != NULL) {
-            struct Node_n* temp = stack->head;
+            Node_n* temp = stack->head;
             stack->head = stack->head->next;
             node_n_destroy(temp);
         }
@@ -482,37 +494,37 @@ void stack_destroy(struct Stack* stack) {
     }
 }
 
-int stack_is_empty(struct Stack* stack) {
+int stack_is_empty(Stack* stack) {
     return (stack == NULL || stack->count == 0);
 }
 
-void* stack_peek(struct Stack* stack) {
+void* stack_peek(Stack* stack) {
     if (!stack_is_empty(stack)) {
         return stack->head->value;
     }
     return NULL;
 }
 
-int stack_size(struct Stack* stack) {
+int stack_size(Stack* stack) {
     if (stack != NULL) {
         return stack->count;
     }
     return 0;
 }
 
-void stack_clear(struct Stack* stack) {
+void stack_clear(Stack* stack) {
     while (!stack_is_empty(stack)) {
         stack_pop(stack);
     }
 }
 
-void stack_print(struct Stack* stack) {
+void stack_print(Stack* stack) {
     if (stack_is_empty(stack)) {
         printf("Stack is empty\n");
         return;
     }
 
-    struct Node_n* current = stack->head;
+    Node_n* current = stack->head;
     printf("Stack: ");
     while (current != NULL) {
         printf("%d ", *(int*)current->value);
@@ -525,8 +537,8 @@ void stack_print(struct Stack* stack) {
 
 // ===================== Queues =====================
 
-struct Queue* queue_create_empty() {
-    struct Queue* new_queue = (struct Queue*)malloc(sizeof(struct Queue));
+Queue* queue_create_empty() {
+    Queue* new_queue = (Queue*)malloc(sizeof(Queue));
     if (new_queue != NULL) {
         new_queue->head = NULL;
         new_queue->tail = NULL;
@@ -536,11 +548,11 @@ struct Queue* queue_create_empty() {
     return new_queue;
 }
 
-void queue_destroy(struct Queue* queue) {
+void queue_destroy(Queue* queue) {
     if (queue != NULL) {
-        struct Node_n* current = queue->head;
+        Node_n* current = queue->head;
         while (current != NULL) {
-            struct Node_n* next = current->next;
+            Node_n* next = current->next;
             node_n_destroy(current);
             current = next;
         }
@@ -548,51 +560,51 @@ void queue_destroy(struct Queue* queue) {
     }
 }
 
-void element_process(struct Node_n* node)
+void element_process(Node_n* node)
 {
     node->next=node->next;
 };
 
-void queue_advence(struct Queue* queue)
+void queue_advence(Queue* queue)
 {
     element_process(queue->head);
     queue->done=queue->done++;
     queue->head=queue->head->next;
 };
 
-void queue_skip(struct Queue* queue)
+void queue_skip(Queue* queue)
 {
     queue->done=queue->done++;
-    queue->head= (struct Node_n *) queue->head->next;
+    queue->head= (Node_n *) queue->head->next;
 };
 
-void queue_add_node(struct Queue* queue, struct Node_n* Node)
+void queue_add_node(Queue* queue,  Node_n* Node)
 {
     queue->aloc=queue->aloc++;
-    queue->tail->next=(struct Node_n *)Node;
+    queue->tail->next=(Node_n *)Node;
 };
 
-void queue_add_value(struct Queue* queue, void* value)
+void queue_add_value(Queue* queue, void* value)
 {
     queue->aloc=queue->aloc++;
-    queue->tail->next=(struct Node_n *) node_n_create_v(value);
+    queue->tail->next=(Node_n *) node_n_create_v(value);
 };
 
-void queue_add_outflow(struct Queue* queue, struct Node_n* Node)
+void queue_add_outflow(Queue* queue,  Node_n* Node)
 {
     queue->aloc=queue->aloc++;
     Node->next=queue->head;
-    queue->head=(struct Node_n *)Node;
+    queue->head=(Node_n *)Node;
 };
 
-void queue_pop(struct Queue* queue)
+void queue_pop(Queue* queue)
 {
     queue->aloc=queue->aloc--;
     queue->tail=NULL;
 };
 
 
-void queue_peek(struct Queue* queue, void** value) {
+void queue_peek(Queue* queue, void** value) {
     if (queue == NULL || queue->head == NULL) {
         *value = NULL;
         return;
@@ -600,18 +612,18 @@ void queue_peek(struct Queue* queue, void** value) {
     *value = queue->head->value;
 }
 
-int queue_is_empty(struct Queue* queue) {
+int queue_is_empty(Queue* queue) {
     return (queue == NULL || queue->head == NULL);
 }
 
-int queue_size(struct Queue* queue) {
+int queue_size(Queue* queue) {
     if (queue == NULL) {
         return 0;
     }
     return queue->aloc - queue->done;
 }
 
-void queue_clear(struct Queue* queue) {
+void queue_clear(Queue* queue) {
     if (queue == NULL) {
         return;
     }
@@ -624,22 +636,18 @@ void queue_clear(struct Queue* queue) {
     queue->aloc = 0;
 }
 
-struct Queue* queue_copy(struct Queue* original) {
+Queue* queue_copy(Queue* original) {
     if (original == NULL) {
         return NULL;
     }
-
-    struct Queue* new_queue = queue_create_empty();
-    struct Node_n* current = original->head;
-
+    Queue* new_queue = queue_create_empty();
+    Node_n* current = original->head;
     while (current != NULL) {
         queue_add_value(new_queue, current->value);
         current = current->next;
     }
-
     new_queue->done = original->done;
     new_queue->aloc = original->aloc;
-
     return new_queue;
 }
 
@@ -649,34 +657,34 @@ struct Queue* queue_copy(struct Queue* original) {
 
 // ===================== Tree =====================
 
-struct tree_bin tree_create_node(struct Node_bin* root_node)
+Tree_bin tree_create_node(Node_bin* root_node)
 {
-    struct tree_bin new_tree;
+    Tree_bin new_tree;
     new_tree.root=root_node;
     return new_tree;
 };
 
-struct tree_bin tree_create_empty()
+Tree_bin tree_create_empty()
 {
-    struct tree_bin new_tree;
+    Tree_bin new_tree;
     new_tree.root=NULL;
     return new_tree;
 };
 
 
-int tree_count_node(struct Node_bin* node) {
+int tree_count_node(Node_bin* node) {
     if (node == NULL) {
         return 0;
     }
     return 1 + tree_count_node(node->link[0]) + tree_count_node(node->link[1]);
 }
 
-void tree_bin_insert(struct tree_bin* tree, void* value) {
-    struct Node_bin* new_node = node_bin_create(value);
+void tree_bin_insert(Tree_bin* tree, void* value) {
+    Node_bin* new_node = node_bin_create(value);
     if (tree->root == NULL) {
         tree->root = new_node;
     } else {
-        struct Node_bin* current = tree->root;
+        Node_bin* current = tree->root;
         while (1) {
             int direction = (value > current->value) ? 1 : 0;
             if (current->link[direction] == NULL) {
@@ -688,11 +696,11 @@ void tree_bin_insert(struct tree_bin* tree, void* value) {
     }
 }
 
-struct Node_bin* tree_bin_search_value(struct Node_bin* node, void* search_value) {
+ Node_bin* tree_bin_search_value(Node_bin* node, void* search_value) {
     if (node == NULL || node->value == search_value) {
         return node;
     }
-    struct node_bin* left_result = tree_bin_search_value(node->link[0], search_value);
+    node_bin * left_result = tree_bin_search_value(node->link[0], search_value);
     if (left_result != NULL) {
         return left_result;
     }
@@ -701,14 +709,14 @@ struct Node_bin* tree_bin_search_value(struct Node_bin* node, void* search_value
 }
 
 
-void tree_bin_destroy(struct tree_bin* tree) {
+void tree_bin_destroy(tree_bin* tree) {
     if (tree->root != NULL) {
         tree->root = NULL;
     }
 }
 
 
-void tree_bin_inorder_traversal(struct Node_bin* node) {
+void tree_bin_inorder_traversal(Node_bin* node) {
     if (node != NULL) {
         tree_bin_inorder_traversal(node->link[0]);
         printf("%p ", node->value);
@@ -716,7 +724,7 @@ void tree_bin_inorder_traversal(struct Node_bin* node) {
     }
 }
 
-void tree_bin_preorder_traversal(struct Node_bin* node) {
+void tree_bin_preorder_traversal(Node_bin* node) {
     if (node != NULL) {
         printf("%p ", node->value);
         tree_bin_preorder_traversal(node->link[0]);
@@ -724,7 +732,7 @@ void tree_bin_preorder_traversal(struct Node_bin* node) {
     }
 }
 
-void tree_bin_postorder_traversal(struct Node_bin* node) {
+void tree_bin_postorder_traversal(Node_bin* node) {
     if (node != NULL) {
         tree_bin_postorder_traversal(node->link[0]);
         tree_bin_postorder_traversal(node->link[1]);
@@ -732,7 +740,7 @@ void tree_bin_postorder_traversal(struct Node_bin* node) {
     }
 }
 
-int tree_bin_height(struct Node_bin* node){
+int tree_bin_height(Node_bin* node){
     if (node == NULL) {
         return 0;
     }

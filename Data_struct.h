@@ -10,7 +10,7 @@
 
 // ===================== Nodes =====================
 
-typedef typedef struct S_Node
+typedef struct S_Node
 {
     void *value;
 }Node;

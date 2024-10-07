@@ -275,7 +275,7 @@ void list_ht_insert(List_ht* list, void* value, int position) {
             new_node->next = current->next;
             new_node->prev = current;
             if (current->next != NULL) {
-                (Node_pn*)(current->next)->prev = new_node;
+                (current->next)->prev = new_node;
             }
             else {
                 list->tail = new_node;
@@ -696,20 +696,19 @@ void tree_bin_insert(Tree_bin* tree, void* value) {
     }
 }
 
- Node_bin* tree_bin_search_value(Node_bin* node, void* search_value) {
+Node_bin* tree_bin_search_value(Node_bin* node, void* search_value) {
     if (node == NULL || node->value == search_value) {
-        return node;
+       return node;
     }
-    node_bin * left_result = tree_bin_search_value(node->link[0], search_value);
+    Node_bin * left_result = tree_bin_search_value(node->link[0], search_value);
     if (left_result != NULL) {
-        return left_result;
+       return left_result;
     }
-
     return tree_bin_search_value(node->link[1], search_value);
 }
 
 
-void tree_bin_destroy(tree_bin* tree) {
+void tree_bin_destroy(Tree_bin* tree) {
     if (tree->root != NULL) {
         tree->root = NULL;
     }

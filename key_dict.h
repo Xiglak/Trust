@@ -17,7 +17,7 @@ typedef struct key_dict{
 
 extern const key_dict GLOBAL_KEY_DICT;
 
-key_dict* key_dict_initialize();
+
 void key_dict_free(key_dict* kd);
 int key_find_index(key_dict a, char* name);
 char* key_find_name (key_dict a, int index);
@@ -33,4 +33,6 @@ void struct_log_printf(List_ht* spine_list);
 void struct_log_fprintf_keys(List_ht* spine_list, FILE* file);
 void struct_log_fprintf_dates(List_ht* spine_list, int key, FILE* file);
 void struct_log_fprintf(List_ht* spine_list, FILE* file);
-
+void tree_bin_print_post(List_ht* spine_list);
+void tree_bin_print_prefix(List_ht* spine_list);
+void tree_bin_print_in(List_ht* spine_list);

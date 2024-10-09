@@ -174,5 +174,6 @@ void      tree_bin_inorder_traversal(Node_bin* node);
 void      tree_bin_preorder_traversal(Node_bin* node);
 void      tree_bin_postorder_traversal(Node_bin* node);
 int       tree_bin_height(Node_bin* node);
+int       tree_bin_node_count(Node_bin* node);
 
 #endif //UNTITLED8_DATA_STRUCT_H

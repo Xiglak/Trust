@@ -37,7 +37,7 @@ const key_dict GLOBAL_KEY_DICT = {
 
 void key_dict_free(key_dict* kd) {
     if (kd != NULL) {
-        for (int i = 0; i < 256; i++) {
+        for (int i = 0; i <key_dict_name_size ; i++) {
             if (kd->name[i] != NULL) {
                 free(kd->name[i]);  
             }
@@ -47,16 +47,16 @@ void key_dict_free(key_dict* kd) {
 }
 
 
-int key_find_index(key_dict a, char* name) {
+int key_find_index(const key_dict a, char* key_name) {
     for (int i = 0; i < key_dict_size; i++) {
-        if (a.name[i] == name) {
+        if (a.name[i] == key_name) {
             return a.index[i];
         }
     }
     return -1;
 }
 
-char* key_find_name (key_dict a, int index) {
+char* key_find_name (const key_dict a, int index) {
     for (int i = 0; i < key_dict_size; i++) {
 
         if (a.index[i] == index) {
@@ -67,7 +67,7 @@ char* key_find_name (key_dict a, int index) {
     return "??";
 }
 
-int key_find_relativ_index_from_name(key_dict a, char* name) {
+int key_find_relativ_index_from_name(const key_dict a, char* name) {
     for (int i = 0; i < key_dict_size; i++) {
         int verif=0;
         for (int j = 0; j < key_dict_name_size||a.index[j]; j++) {
@@ -78,8 +78,17 @@ int key_find_relativ_index_from_name(key_dict a, char* name) {
         if (verif == 0) {
             return i;
         }
-        return -1;
     }
+    return -1;
+}
+
+int key_find_relativ_index_from_index(const key_dict a, int index){
+    for (int i = 0; i < key_dict_size; i++) {
+        if (index != a.index[i]) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 List_ht* struct_log_find_key(List_ht* spine_list, int key){
@@ -87,23 +96,33 @@ List_ht* struct_log_find_key(List_ht* spine_list, int key){
         return NULL;
     }
     Node_pn* struct_traverse = spine_list->head;
-    while ((int)((List_ht*)(struct_traverse->value))->head->value != key){
-        if(struct_traverse->next==NULL){
+    while (struct_traverse != NULL) {
+        int a=0;
+        printf("%d",a++);
+        List_ht* current_list = struct_traverse->value;
+        if (current_list->head != NULL && current_list->head->value != NULL) {
+            if (*(int*)(current_list->head->value) == key) {
+                return current_list;
+            }
+        }
+        else{
             return NULL;
         }
-        struct_traverse=struct_traverse->next;
+        struct_traverse = struct_traverse->next;
     }
-    return struct_traverse->value;
 }
 
 List_ht* struct_log_create(){
     List_ht* spine_list = list_ht_create_empty();
+    List_ht* cronique = list_ht_create_empty();
+    list_ht_append_value(cronique,"c");
+    list_ht_append_value(spine_list,cronique);
     return spine_list;
 }
 
 void struct_log_append_key(List_ht* spine_list, int key){
     list_ht_append_value(spine_list,list_ht_create_empty());
-    list_ht_append_value((List_ht*)(spine_list->tail->value),key);
+    list_ht_append_value((List_ht*)(spine_list->tail->value),&key);
 }
 
 void struct_log_append_data(List_ht* spine_list, int key,int data[2]){
@@ -115,7 +134,7 @@ void struct_log_printf_keys(List_ht* spine_list){
     Node_pn* key_node = spine_list->head;
     printf("struct_log_printf_keys keys :\n");
     while (key_node != NULL) {
-        printf("%s\n",key_find_name(GLOBAL_KEY_DICT,((List_ht*)(key_node->value))->head->value));
+        printf("%s\n",key_find_name(GLOBAL_KEY_DICT,(int)((List_ht*)key_node->value)->head->value));
         key_node = key_node->next;
     }
 }
@@ -123,9 +142,13 @@ void struct_log_printf_keys(List_ht* spine_list){
 void struct_log_printf_data(List_ht* spine_list, int key){
     Node_pn* key_node = struct_log_find_key(spine_list,key)->head;
     while (key_node != NULL) {
-        printf("%f",key_node->value);
+        printf("%p",key_node->value);
         key_node = key_node->next;
     }
+}
+
+void struct_log_fprintf_dates(List_ht* spine_list, int key, FILE* file) {//TODO
+    Node_pn* key_node = spine_list->head;
 }
 
 void struct_log_printf(List_ht* spine_list){
@@ -144,11 +167,18 @@ void struct_log_fprintf_keys(List_ht* spine_list, FILE* file){
     }
 }
 
-void struct_log_fprintf_data(List_ht* spine_list, int key, FILE* file){
-    Node_pn* key_node = struct_log_find_key(spine_list,key)->head;
-    fprintf(file,"%s",key_find_name(GLOBAL_KEY_DICT,key));
+void struct_log_fprintf_data(List_ht* spine_list, int key, FILE* file) {
+    List_ht* found_list = struct_log_find_key(spine_list, key);
+
+    if (found_list == NULL || found_list->head == NULL) {
+        fprintf(file, "Key not found\n");
+        return;
+    }
+    Node_pn* key_node = found_list->head;
+    fprintf(file, "%s", key_find_name(GLOBAL_KEY_DICT, key));
     while (key_node != NULL) {
-        //fprintf(file,"%f",(float)key_node->value[1]);
+        double value = *(double*)key_node->value;
+        fprintf(file, "%f", value);
         key_node = key_node->next;
     }
 }

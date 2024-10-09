@@ -739,12 +739,43 @@ void tree_bin_postorder_traversal(Node_bin* node) {
     }
 }
 
-int tree_bin_height(Node_bin* node){
+int tree_bin_height(Node_bin* node) {
     if (node == NULL) {
         return 0;
     }
-    int left_height = tree_bin_height(node->link[0]);
-    int right_height = tree_bin_height(node->link[1]);
-    return (left_height > right_height ? left_height : right_height) + 1;
+    return (tree_bin_height(node->link[0]) > tree_bin_height(node->link[1]) ? tree_bin_height(node->link[0]) : tree_bin_height(node->link[1])) + 1;
 }
 
+int tree_bin_node_count(Node_bin* node){
+    if (node == NULL) {
+        return 0;
+    }
+    return tree_bin_node_count(node->link[0])+tree_bin_node_count(node->link[1])+1;
+}
+
+void tree_bin_print_prefix(Node_bin* node){
+    if (node == NULL) {
+        return ;
+    }
+    tree_bin_print_prefix(node->link[0]);
+    tree_bin_print_prefix(node->link[1]);
+    printf("%p ", node->value);
+}
+
+void tree_bin_print_post(Node_bin* node){
+    if (node == NULL) {
+        return ;
+    }
+    printf("%p ", node->value);
+    tree_bin_print_post(node->link[0]);
+    tree_bin_print_post(node->link[1]);
+}
+
+void tree_bin_print_in(Node_bin* node){
+    if (node == NULL) {
+        return ;
+    }
+    tree_bin_print_post(node->link[0]);
+    printf("%p ", node->value);
+    tree_bin_print_post(node->link[1]);
+}
